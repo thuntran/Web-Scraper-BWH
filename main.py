@@ -5,8 +5,15 @@ from bs4 import BeautifulSoup as soup
 import re
 from csv import writer
 # from create import filename
+def append_list_as_row(file_name, list_of_elem):
+    # Open file in append mode
+    with open(file_name, 'a+', newline='') as write_obj:
+        # Create a writer object from csv module
+        csv_writer = writer(write_obj)
+        # Add contents of list as last row in the csv file
+        csv_writer.writerow(list_of_elem)
 
-my_url  = Request('https://www.indeed.com/jobs?q=engineering&l=South%20Hadley%2C%20MA&vjk=458ee8e87dc4f8b0')
+my_url  = Request('https://www.indeed.com/jobs?q=software%20engineer%20intern&l=United%20States&start=10&vjk=13db104b31e628c4')
 
 #Opening up connection and grabbing the page
 uClient = uReq(my_url)
@@ -20,33 +27,31 @@ page_soup = soup(page_html, "html.parser")
 # grabs each product. Even though this is for linkedin jobs, you can parse different parts of the website
 containers = page_soup.findAll("div", {"class" : "slider_container"})
 
-filename = "jobs.csv"
-f = open(filename, "w")
-# f = open(filename, "w")
-headers = "Role, Company Name, Skills, Link To Site\n"
-f.write(headers)
 
-def append_list_as_row(file_name, list_of_elem):
-    # Open file in append mode
-    with open(file_name, 'a+', newline='') as write_obj:
-        # Create a writer object from csv module
-        csv_writer = writer(write_obj)
-        # Add contents of list as last row in the csv file
-        csv_writer.writerow(list_of_elem)
+filename = "jobs.csv"
+f = open(filename, "a")
+# f = open(filename, "
+# headers = "Role, Company Name, Skills, Link To Site\n"
+# f.write(headers)
+# f.close()
+# f = open(filename, "a")
 
 for container in containers:
     title_container = container.findAll("h2", {"class":"jobTitle"})
     company_container = container.findAll("div", {"class":"heading6 company_location tapItem-gutter companyInfo"})
-    job_desc_container = container.findAll("div", {"class":"jobsearch-jobDescriptionText"})
-    location_container = container.find
+    # job_desc_container = container.findAll("div", {"class":"jobsearch-jobDescriptionText"})
+    # location_container = container.find
     # link_container = container.findAll("a", attrs={'href'})
     # "class":"tapItem fs-unmask result resultWithShelf sponTapItem desktop"
     # vjs-highlight 
     # link_page = link_container
+    listt = [0]*2
     job_title = title_container[0].text
     company_name = company_container[0].text
+    listt[0] = (job_title)
+    listt[1]=(company_name)
     # f.write(job_title + "," + company_name + "\n")
-    append_list_as_row(filename, [job_title, company_name])
+    append_list_as_row(filename, listt)
     # for company in company_name:
     #     print(company, end="|")
     # job_description = job_desc_container[0].text
