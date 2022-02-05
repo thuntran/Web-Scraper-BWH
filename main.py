@@ -14,9 +14,8 @@ def append_list_as_row(file_name, list_of_elem):
         # Add contents of list as last row in the csv file
         csv_writer.writerow(list_of_elem)
 
-print("Web Scraping Tool for SWE Internships on indeed.com")
+print("Web Scraping Tool for Internships on indeed.com")
 url = input("Please input your indeed.com link: ")
-
 my_url  = Request(url)
 
 #Opening up connection and grabbing the page
