@@ -1,10 +1,11 @@
-# This is our main.
+# Import necessary modules
 from os import link
 from urllib.request import Request, urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import re
 from csv import writer
-# from create import filename
+
+
 def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
     with open(file_name, 'a+', newline='') as write_obj:
@@ -13,7 +14,10 @@ def append_list_as_row(file_name, list_of_elem):
         # Add contents of list as last row in the csv file
         csv_writer.writerow(list_of_elem)
 
-my_url  = Request('https://www.indeed.com/jobs?q=software%20engineer%20intern&l=United%20States&start=10&vjk=13db104b31e628c4')
+print("Web Scraping Tool for SWE Internships on indeed.com")
+url = input("Please input your indeed.com link: ")
+
+my_url  = Request(url)
 
 #Opening up connection and grabbing the page
 uClient = uReq(my_url)
@@ -23,42 +27,35 @@ page_html = uClient.read()
 uClient.close()
 # Html passing
 page_soup = soup(page_html, "html.parser")
-# print(page_soup.h1)
 # grabs each product. Even though this is for linkedin jobs, you can parse different parts of the website
-containers = page_soup.findAll("div", {"class" : "slider_container"})
+containers = page_soup.findAll("a", {"class" : re.compile(r'job_')})
 
 
 filename = "jobs.csv"
 f = open(filename, "a")
-# f = open(filename, "
-# headers = "Role, Company Name, Skills, Link To Site\n"
-# f.write(headers)
-# f.close()
-# f = open(filename, "a")
 
 for container in containers:
     title_container = container.findAll("h2", {"class":"jobTitle"})
     company_container = container.findAll("div", {"class":"heading6 company_location tapItem-gutter companyInfo"})
-    # job_desc_container = container.findAll("div", {"class":"jobsearch-jobDescriptionText"})
-    # location_container = container.find
-    # link_container = container.findAll("a", attrs={'href'})
-    # "class":"tapItem fs-unmask result resultWithShelf sponTapItem desktop"
-    # vjs-highlight 
-    # link_page = link_container
-    listt = [0]*2
+    link_container = container["href"]
+    listt = [0]*3
     job_title = title_container[0].text
+    if job_title[0:3] == "new":
+        job_title = "New: " + job_title[3:]
+    
+    
+
+
     company_name = company_container[0].text
+
+   
+    link_url = f"http://indeed.com{link_container}"
     listt[0] = (job_title)
     listt[1]=(company_name)
-    # f.write(job_title + "," + company_name + "\n")
+    listt[2] = (link_url)
     append_list_as_row(filename, listt)
-    # for company in company_name:
-    #     print(company, end="|")
-    # job_description = job_desc_container[0].text
-    # print(job_description)
-    # print("company name: " + company_name)
-    # print("job title name: " + job_title)
-    # print(link_page)
+
+
 f.close()
 
 
