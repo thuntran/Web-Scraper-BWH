@@ -19,7 +19,6 @@ Consequently, we've been able to ease the process of job-searching for college s
 9. Run the program with this folder and add an indeed HTML link to get any job posting you want.
 10. Yayyy, congratulations! You now have a cool CSV file of great internships/jobs.
 11. <strong>NOTE: You can only use an indeed.com link and no other as the program is set up for indeed only. </strong>
-12. To understand the program better, here's a demo video:
 
 # Installing packages for the Web Scraper program
 1. Python installation guide: https://realpython.com/installing-python/ and https://docs.microsoft.com/en-us/visualstudio/python/installing-python-support-in-visual-studio?view=vs-2022
