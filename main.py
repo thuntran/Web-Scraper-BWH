@@ -80,6 +80,7 @@ for job_container in job_containers:
 
     # Append the job posting to the end of the CSV file
     append_list_as_row(filename, posting)
+    print("Scraping Site Successful, Go to your excel sheet to view your new csv file!")
 
 # Close the CSV file
 f.close()
