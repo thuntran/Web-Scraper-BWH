@@ -1,5 +1,5 @@
 # Web Scraper (for Black Wings Hack 2022)
-***Our program is a web scraper tool that scrapes the users' prefered job posting from [indeed.com](https://www.indeed.com/).***
+***Our program is a web scraping tool that scrapes the users' preferred job posting from [indeed.com](https://www.indeed.com/).***
 
 # Programs Functionality
 We utilized the [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/) package to parse the HTML data from that site. Subsequently, we developed a Python program that manipulates the data in the html to return the job title, company name and link to the specific job posting.
