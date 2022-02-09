@@ -54,7 +54,12 @@ for job_container in job_containers:
     # with a number of classes specified below
     # NOTE: Company name and location are tagged under the same div,
     # so this also returns the location of the job
-    company_container = job_container.findAll("div", {"class":"heading6 company_location tapItem-gutter companyInfo"})
+    company_container = job_container.findAll(
+        "div", 
+        {"class":
+        "heading6 company_location tapItem-gutter companyInfo"
+        }
+    )
     # Get the link container via href
     link_container = job_container["href"]
     
@@ -71,7 +76,7 @@ for job_container in job_containers:
     # Convert the link to the job posting into a string
     link_url = f"http://indeed.com{link_container}"
 
-    # Create a posting in the CSV file with job title, company name ( + location),
+    # Create a posting in the CSV file with job title, company name (+ location),
     # and link to the job posting
     posting = [0] * 3 
     posting[0] = (job_title)
@@ -84,4 +89,4 @@ for job_container in job_containers:
 
 # Close the CSV file
 f.close()
-print("Scraping Site Successful, Go to your excel sheet to view your new csv file!")
+print("Scraping site successful, go to your Excel sheet to view your updated CSV file!")
