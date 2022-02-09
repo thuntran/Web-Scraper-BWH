@@ -11,9 +11,9 @@ Consequently, we've been able to ease the process of job-searching for college s
 # How to Run The Program
 1. Download the latest version of Visual Studio Code depending on your device(***Mac/Linux/Windows***). The proper documentation and guide can be found here: https://code.visualstudio.com/download
 3. Download Python for your device here: https://www.python.org/downloads/
-4. Open your command line on Windows (terminal on Mac/Linux) by searching on your start page and type `python --version ` to ensure Python has been installed properly. If you run into errors, check the help guide at the end of this README for extra help.
+4. Open your command line on Windows (terminal on Mac/Linux) by searching on your start page and type `python --version` to ensure Python has been installed properly. If you run into errors, check the help guide at the end of this README for extra help.
 4. Download the Python extension via VSCode which is found on the extensions menu of VSCode.
-5. To ensure everything is installed properly, copy this code `print('hello world')` and press the run button or `Ctrl+Shift+B` to run the program.
+5. To ensure everything is installed properly, copy this code `print('Hello World')` and press the run button or `Ctrl+Shift+B` to run the program.
 6. Open your command line or terminal on your computer and type `pip install bs4`. BeautifulSoup is a Python package that allows for pulling data out of HTML and XML files.
 7. On your command line or terminal, at your current working directory, copy the following text to clone the project `git clone https://github.com/thuntran/Web-Scraper-BWH.git`. A folder named `Web-Scraper-BWH` folder should be created at the current directory on your local computer.
 9. Run the program with this folder and add an indeed HTML link to get any job posting you want.
